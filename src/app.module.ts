@@ -7,6 +7,7 @@ import {TypeOrmModule} from "@nestjs/typeorm";
 import {User} from "./users/entities/user.entity";
 import { GroupsModule } from './groups/groups.module';
 import {Group} from "./groups/entities/group.entity";
+import { TransactionsModule } from './transactions/transactions.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import {Group} from "./groups/entities/group.entity";
     }),
     UsersModule,
     GroupsModule,
+    TransactionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

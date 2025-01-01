@@ -1,3 +1,3 @@
 export class CreateGroupDto {
-    name: string
+  name: string;
 }

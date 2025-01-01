@@ -7,15 +7,21 @@ import {
 } from 'typeorm';
 import { User } from '../../users/entities/user.entity';
 
-@Entity('groups')
-export class Group {
+@Entity('transactions')
+export class Transaction {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   name: string;
 
-  @OneToMany(() => User, (user) => user.group)
+  @Column()
+  description: string;
+
+  @Column()
+  amount: number;
+
+  @OneToMany(() => User, (user) => user.transactions)
   @JoinColumn()
-  users: User[];
+  user: User;
 }

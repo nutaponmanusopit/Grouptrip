@@ -1,8 +1,16 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { GroupsService } from './groups.service';
 import { CreateGroupDto } from './dto/create-group.dto';
 import { UpdateGroupDto } from './dto/update-group.dto';
-import {CreateUserDto} from "../users/dto/create-user.dto";
+import { CreateUserDto } from '../users/dto/create-user.dto';
 
 @Controller('group')
 export class GroupsController {
@@ -18,11 +26,6 @@ export class GroupsController {
     return this.groupsService.createUser(+id, createUserDto);
   }
 
-  @Get(':id/users')
-  findAllUser(@Param('id') id: string) {
-    return this.groupsService.findOne(+id);
-  }
-
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateGroupDto: UpdateGroupDto) {
     return this.groupsService.update(+id, updateGroupDto);
@@ -31,5 +34,15 @@ export class GroupsController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.groupsService.remove(+id);
+  }
+
+  @Get(':id/users')
+  findAllUsers(@Param('id') id: string) {
+    return this.groupsService.findOne(+id);
+  }
+
+  @Get(':id/transactions')
+  findAllTransactions(@Param('id') id: string) {
+    return this.groupsService.findOne(+id);
   }
 }
